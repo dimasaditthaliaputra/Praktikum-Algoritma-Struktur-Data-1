@@ -26,31 +26,31 @@ public class Tugas3 {
             hariKuliah[i] = input.nextLine();
         }
 
-        int pilihan;
+        int menu;
         do {
-            System.out.println("\nMenu:");
+            System.out.println("\n===================== Menu ======================");
             System.out.println("1. Tampilkan seluruh jadwal kuliah");
-            System.out.println("2. Tampilkan jadwal berdasarkan hari");
-            System.out.println("3. Tampilkan jadwal berdasarkan semester");
+            System.out.println("2. Tampilkan jadwal kuliah berdasarkan hari");
+            System.out.println("3. Tampilkan jadwal kuliah berdasarkan semester");
             System.out.println("4. Cari mata kuliah berdasarkan nama");
             System.out.println("5. Keluar");
             System.out.print("Pilih menu: ");
-            pilihan = input.nextInt();
+            menu = input.nextInt();
             input.nextLine();
 
-            switch (pilihan) {
+            switch (menu) {
                 case 1:
-                    tampilkanSeluruhJadwal(namaMatkul, sks, semester, hariKuliah);
+                    tampilSeluruhJadwal(namaMatkul, sks, semester, hariKuliah);
                     break;
                 case 2:
                     System.out.print("Masukkan hari kuliah yang ingin ditampilkan: ");
                     String hari = input.nextLine();
-                    tampilkanJadwalBerdasarkanHari(namaMatkul, sks, semester, hariKuliah, hari);
+                    tampilJadwalByHari(namaMatkul, sks, semester, hariKuliah, hari);
                     break;
                 case 3:
                     System.out.print("Masukkan semester yang ingin ditampilkan: ");
                     int sem = input.nextInt();
-                    tampilkanJadwalBerdasarkanSemester(namaMatkul, sks, semester, hariKuliah, sem);
+                    tampilJadwalBySemester(namaMatkul, sks, semester, hariKuliah, sem);
                     break;
                 case 4:
                     System.out.print("Masukkan nama mata kuliah yang dicari: ");
@@ -58,25 +58,25 @@ public class Tugas3 {
                     cariMataKuliah(namaMatkul, sks, semester, hariKuliah, matkul);
                     break;
                 case 5:
-                    System.out.println("Terima kasih!");
+                    System.out.println("Terima kasih, have a nice day!");
                     break;
                 default:
-                    System.out.println("Pilihan tidak valid. Coba lagi.");
+                    System.out.println("Menu tidak valid. Coba lagi.");
             }
-        } while (pilihan != 5);
+        } while (menu != 5);
 
         input.close();
     }
 
-    static void tampilkanSeluruhJadwal(String[] namaMatkul, int[] sks, int[] semester, String[] hariKuliah) {
-        System.out.println("\nJadwal Kuliah:");
+    static void tampilSeluruhJadwal(String[] namaMatkul, int[] sks, int[] semester, String[] hariKuliah) {
+        System.out.println("\nList Jadwal Kuliah:");
         for (int i = 0; i < namaMatkul.length; i++) {
             System.out.println(namaMatkul[i] + " | SKS: " + sks[i] + " | Semester: " + semester[i] + " | Hari: " + hariKuliah[i]);
         }
     }
 
-    static void tampilkanJadwalBerdasarkanHari(String[] namaMatkul, int[] sks, int[] semester, String[] hariKuliah, String hari) {
-        System.out.println("\nJadwal Kuliah untuk hari " + hari + ":");
+    static void tampilJadwalByHari(String[] namaMatkul, int[] sks, int[] semester, String[] hariKuliah, String hari) {
+        System.out.println("\nList Jadwal Kuliah untuk hari " + hari + ":");
         boolean found = false;
         for (int i = 0; i < namaMatkul.length; i++) {
             if (hariKuliah[i].equalsIgnoreCase(hari)) {
@@ -87,8 +87,8 @@ public class Tugas3 {
         if (!found) System.out.println("Tidak ada mata kuliah di hari tersebut.");
     }
 
-    static void tampilkanJadwalBerdasarkanSemester(String[] namaMatkul, int[] sks, int[] semester, String[] hariKuliah, int sem) {
-        System.out.println("\nJadwal Kuliah untuk Semester " + sem + ":");
+    static void tampilJadwalBySemester(String[] namaMatkul, int[] sks, int[] semester, String[] hariKuliah, int sem) {
+        System.out.println("\nList Jadwal Kuliah untuk Semester " + sem + ":");
         boolean found = false;
         for (int i = 0; i < namaMatkul.length; i++) {
             if (semester[i] == sem) {
